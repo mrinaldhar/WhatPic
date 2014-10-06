@@ -1,0 +1,44 @@
+<% provide(:title, 'All Photos') %>
+<html>
+<head>
+  <style>
+  a {
+  color: white;
+
+}
+a:visited {
+  color:white;
+}
+a:active {
+  color:white;
+}
+</style>
+<body>
+<h1>Listing photos</h1>
+
+<br /><big>
+<%= link_to 'Add a new Photo', new_photo_path %>
+<br /><br /></big>
+<table id="photostable">
+  <thead>
+    <tr>
+      <th>Tags</th>
+      <th>Picture</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @photos.each do |photo| %>
+      <tr>
+        <td><%= photo.tags %></td>
+        <td><%= photo.picture %></td>
+        <td><%= link_to 'Show', photo %></td>
+        <td><%= link_to 'Edit', edit_photo_path(photo) %></td>
+        <td><%= link_to 'Destroy', photo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

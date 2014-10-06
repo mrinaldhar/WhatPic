@@ -1,0 +1,63 @@
+<% provide(:title, 'Playing now!') %>
+<html>
+<head>
+  <style>
+  a {
+  color: white;
+
+}
+a:visited {
+  color:white;
+}
+a:active {
+  color:white;
+}
+table {
+  margin-top: 50px;
+}
+.green {
+  color:green;
+}
+.red {
+  color:red;
+}
+#timer {
+  background-color: rgba(255,255,255,0.8);
+  padding:20px;
+  border-radius: 150px;
+  color:black;
+
+  box-shadow: 0 0 15px black;
+}
+</style>
+<body>
+  <% content_for :head do %>
+  <%= javascript_include_tag 'play' %>
+<% end %>
+<h1>What is this called?</h1>
+<p align="right">
+<big> 
+<% if @difficulty == 20 %>
+<span class="green">Difficulty: Easy</span> | <%= link_to "Switch to Hard?", play_path(:difficulty => 10) %>
+<% else %>
+<span class="red">Difficulty: Hard</span> | <%= link_to "Switch to Easy?", play_path(:difficulty => 20) %>
+<% end %></big>
+</p>
+<table><tr>
+    <% @photos.each do |photo| %>
+    <% @id = photo.id %>
+        <td class="animage"><%= image_tag(photo.picture_url, :height => 150) if photo.picture.present? %></td>
+    <% end %>
+  </tr>
+</table>
+  <big id="timer">Time Left: <br /><div id="timedet"></div></big>
+ 
+ <script>
+  window.difficulty = <%= @difficulty %>;
+</script>
+  <%= form_tag do %>
+  <%= text_field_tag(:answer) %>
+  <%= hidden_field_tag(:photoid, @id) %>
+  <%= submit_tag("Check my answer!", class: "btn btn-success") %>
+
+<% end %>

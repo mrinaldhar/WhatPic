@@ -1,0 +1,204 @@
+@import "bootstrap";
+@font-face {
+ font-family: myfont;    
+  src: url('/assets/myriadpro.otf');
+  }
+html {
+  overflow-y: scroll;
+}
+
+body {
+  padding-top: 60px;
+  font-family: myfont;
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+}
+
+.center h1 {
+  margin-bottom: 10px;
+}
+
+
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid #eaeaea;
+  color: #999;
+
+}
+
+footer a {
+  color: #555;
+}
+
+footer a:hover {
+  color: #222;
+}
+
+footer small {
+  float: left;
+}
+
+footer ul {
+  float: right;
+  list-style: none;
+}
+
+footer ul li {
+  float: left;
+  margin-left: 10px;
+}
+
+
+/* mixins, variables, etc. */
+
+$grayMediumLight: #eaeaea;
+
+@mixin box_sizing {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* miscellaneous */
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  @include box_sizing;
+}
+
+/*Sidebar*/
+
+aside {
+  section {
+    padding: 10px 0;
+    border-top: 1px solid $grayLighter;
+    &:first-child {
+      border: 0;
+      padding-top: 0;
+    }
+    span {
+      display: block;
+      margin-bottom: 3px;
+      line-height: 1;
+    }
+    h1 {
+      font-size: 1.4em;
+      text-align: left;
+      letter-spacing: -1px;
+      margin-bottom: 3px;
+      margin-top: 0px;
+    }
+  }
+}
+
+.gravatar {
+  float: left;
+  margin-right: 10px;
+}
+
+/* forms */
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+  @include box_sizing;
+}
+
+input {
+  height: auto !important;
+}
+
+#error_explanation {
+  color: #f00;
+  ul {
+    list-style: none;
+    margin: 0 0 18px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .control-group;
+  @extend .error;
+}
+
+/* Users index */
+
+.users {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-top: 1px solid $grayLighter;
+    &:last-child {
+      border-bottom: 1px solid $grayLighter;
+    }
+  }
+}
+#timer {
+  position: fixed;
+  right:50px;
+  top:130px;
+
+}
+.greenc {
+  color:green;
+}
+.redc {
+  color:red;
+}
+.bluec {
+  color: blue;
+}
+.container {
+  font-family: myfont;
+}
+.navbar {
+  font-family: myfont;
+}
+.animage img {
+max-height: 250px;
+}
+.logo {
+  position:absolute;
+  top:20px;
+  left:40px;
+  border:1px black solid;
+}
+.header {
+  background-color: rgba(0,0,0,0.5);
+}
+.hero-unit {
+  background-color: rgba(0,0,0,0.6);
+  color:white;
+}
+a {
+  color: white;
+}
+a:visited {
+  color:white;
+}
+a:active {
+  color:white;
+}
+#photostable td {
+  padding: 10px;
+}
+.logo {
+  opacity: 0.8;
+}

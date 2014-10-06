@@ -1,0 +1,29 @@
+<% provide(:title, @user.name) %>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h2>
+        <%= gravatar_for @user %>
+        <%= @user.name %>
+      </h2>
+<small>
+	<br />
+      <i>@<%= @user.username %>
+        <br />
+        <%= @user.email %></i></small>
+    </section>
+ <section>
+ 	<h3>Score: <%= @user.score %></h3>
+ </section>
+ <section>
+  Invite-a-friend:
+ <%= form_tag("/invite", method: "post") do %>
+  <%= text_field_tag(:email) %>
+    <%= hidden_field_tag(:id, @user.id) %>
+
+  <%= submit_tag("Send an invite!", class: "btn btn-primary") %>
+  <% end %>
+
+ </section>
+  </aside>
+</div>

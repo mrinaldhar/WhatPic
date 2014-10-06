@@ -1,0 +1,25 @@
+<% provide(:title, 'All users') %>
+<html>
+<head>
+	<style>
+	a {
+  color: gray;
+
+}
+a:visited {
+  color:gray;
+}
+a:active {
+  color:gray;
+}
+</style>
+<body>
+<h1>Leaderboard</h1>
+
+<%= will_paginate %>
+
+<ul class="users">
+  <%= render @users %>
+</ul>
+
+<%= will_paginate %>

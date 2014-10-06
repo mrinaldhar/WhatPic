@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title><%= yield(:title) %></title>
+<%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+	<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+	<%= csrf_meta_tags %>
+	<!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	 <%= yield(:head) %>
+	</head>
+<body background="/stars.png" style="background-size: 100% auto; ">
+	<header class="navbar navbar-fixed-top navbar-inverse">
+	<div class="navbar-inner">
+	<div class="container">
+	<img class="logo" src="/logo.png" style="max-height: 40px;" />
+	<nav>
+	<ul class="nav pull-right">
+	<li><%= link_to "Home",    current_user, style: "color:white" %></li>
+	<% if signed_in? %>
+            <li><%= link_to "Leaderboard", users_path, style: "color:white" %></li>
+            <% if current_user.admin? %>
+            <li><%= link_to "Manage Photos", photos_path, style: "color:white" %></li>
+            <% end %>
+            <li><%= link_to "Play now", play_path, style: "color:white" %></li>
+            <li id="fat-menu" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:white">
+                Account <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+                <li class="divider"></li>
+                <li>
+                  <%= link_to "Sign out", signout_path, method: "delete" %>
+                </li>
+              </ul>
+            </li>
+          <% else %>
+            <li><%= link_to "Sign in", signin_path, style: "color:white" %></li>
+          <% end %>
+	</ul>
+	</nav>
+	</div>
+	</div>
+	</header>
+	<div class="container">
+		<% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
+      <br />
+      <div class="hero-unit">
+	<%= yield %>
+</div>
+	  <%= render 'layouts/footer' %>
+
+       
+	</div>
+	</body>
+	</html>

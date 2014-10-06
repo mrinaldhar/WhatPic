@@ -1,0 +1,33 @@
+<% provide(:title, 'Showing photo') %>
+<html>
+<head>
+	<style>
+	a {
+  color: white;
+
+}
+a:visited {
+  color:white;
+}
+a:active {
+  color:white;
+}
+img {
+	max-height: 300px;
+}
+</style>
+<body>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Tags:</strong>
+  <%= @photo.tags %>
+</p>
+
+<p>
+  <strong>Picture:</strong>
+  <%= image_tag(@photo.picture_url, :height => 300) if @photo.picture.present? %>
+</p>
+
+<%= link_to 'Edit', edit_photo_path(@photo) %> |
+<%= link_to 'Back', photos_path %>
